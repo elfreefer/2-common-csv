@@ -1,3 +1,7 @@
+test:
+ post:
+   - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+   - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
 private void validate() throws IllegalArgumentException {
  for (int i=0; i<100; i++) {
  System.out.print('.');
@@ -8,7 +12,3 @@ private void validate() throws IllegalArgumentException {
  }
  }
 
-test:
- post:
-   - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-   - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
